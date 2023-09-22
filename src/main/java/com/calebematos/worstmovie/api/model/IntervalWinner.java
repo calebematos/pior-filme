@@ -9,10 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class PrizeRange {
+public class IntervalWinner {
 
-    private List<Prize> min;
-    private List<Prize> max;
+    private List<Winner> min;
+    private List<Winner> max;
 
 
 }

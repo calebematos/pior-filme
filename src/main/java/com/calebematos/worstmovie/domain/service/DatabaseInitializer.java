@@ -4,9 +4,9 @@ import com.calebematos.worstmovie.domain.model.Movie;
 import com.calebematos.worstmovie.domain.model.Producer;
 import com.calebematos.worstmovie.domain.model.dto.CsvData;
 import com.calebematos.worstmovie.domain.model.dto.CsvHeader;
-import com.calebematos.worstmovie.domain.model.dto.ProducerWinners;
 import com.calebematos.worstmovie.domain.repository.MovieRepository;
 import com.calebematos.worstmovie.domain.repository.ProducerRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -28,9 +28,9 @@ public class DatabaseInitializer {
         var movieList = this.getClass().getResourceAsStream("/csv/movielist.csv");
         List<CsvData> csvDataList = getCsvData(movieList);
         formatCsvData(csvDataList);
-
     }
 
+    @Transactional
     private void formatCsvData(List<CsvData> csvDataList) {
 
         for (CsvData csvData : csvDataList) {
